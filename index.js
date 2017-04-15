@@ -43,7 +43,7 @@
 
   var hasReflect = require('has-reflect-support-x');
   var assertIsObject = require('assert-is-object-x');
-  var objectKeys = require('object-keys');
+  var objectKeys = Object.keys || require('object-keys');
   var reflectOwnKeys = hasReflect && Reflect.ownKeys;
 
   if (reflectOwnKeys) {
