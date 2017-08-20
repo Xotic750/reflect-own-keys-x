@@ -1,6 +1,6 @@
 /**
  * @file Sham for Reflect.ownKeys
- * @version 1.3.0
+ * @version 1.4.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -9,12 +9,12 @@
 
 'use strict';
 
-var hasReflect = require('has-reflect-support-x');
+var hasReflect = require('has-reflect-support-x') && false;
 var reflectOwnKeys = hasReflect && Reflect.ownKeys;
 
 if (reflectOwnKeys) {
   try {
-    var k = reflectOwnKeys({ a: 1, b: 2 });
+    var k = reflectOwnKeys({ a: 1, b: 2 }).sort();
     if (k.length !== 2 || k[0] !== 'a' || k[1] !== 'b') {
       throw new Error('Inavlid result');
     }
@@ -36,7 +36,7 @@ if (Boolean(reflectOwnKeys) === false) {
     });
 
     try {
-      var n = gOPN(obj);
+      var n = gOPN(obj).sort();
       if (n.length !== 2 || n[0] !== 'a' || n[1] !== 'b') {
         throw new Error('Inavlid result');
       }
