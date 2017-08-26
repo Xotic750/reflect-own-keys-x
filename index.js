@@ -1,6 +1,6 @@
 /**
  * @file Sham for Reflect.ownKeys
- * @version 1.4.0
+ * @version 1.5.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -9,14 +9,14 @@
 
 'use strict';
 
-var hasReflect = require('has-reflect-support-x') && false;
+var hasReflect = require('has-reflect-support-x');
 var reflectOwnKeys = hasReflect && Reflect.ownKeys;
 
 if (reflectOwnKeys) {
   try {
     var k = reflectOwnKeys({ a: 1, b: 2 }).sort();
     if (k.length !== 2 || k[0] !== 'a' || k[1] !== 'b') {
-      throw new Error('Inavlid result');
+      throw new Error('failed');
     }
   } catch (ignore) {
     reflectOwnKeys = null;
@@ -25,56 +25,13 @@ if (reflectOwnKeys) {
 
 if (Boolean(reflectOwnKeys) === false) {
   var assertIsObject = require('assert-is-object-x');
-  var objectKeys = require('object-keys-x');
-  var rDOP = require('reflect-define-property-x');
-  var obj;
-  var gOPN = typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames;
-  if (gOPN) {
-    obj = { a: 1 };
-    rDOP(obj, 'b', {
-      value: 2
-    });
-
-    try {
-      var n = gOPN(obj).sort();
-      if (n.length !== 2 || n[0] !== 'a' || n[1] !== 'b') {
-        throw new Error('Inavlid result');
-      }
-    } catch (ignore) {
-      gOPN = null;
-    }
-  }
-
-  var gOPS = typeof Object.getOwnPropertySymbols === 'function' && Object.getOwnPropertySymbols;
-  if (gOPS) {
-    var hasSymbolSupport = require('has-symbol-support-x');
-    try {
-      var symbol = hasSymbolSupport && Symbol('');
-      obj = { a: 1 };
-      if (symbol) {
-        rDOP(obj, symbol, {
-          value: 2
-        });
-      }
-
-      var s = gOPS(obj);
-      if (symbol) {
-        // eslint-disable-next-line max-depth
-        if (s.length !== 1 || s[0] !== symbol) {
-          throw new Error('Inavlid result');
-        }
-      } else if (s.length !== 0) {
-        throw new Error('Inavlid result');
-      }
-    } catch (ignore) {
-      gOPS = null;
-    }
-  }
+  var getOwnPropertyNames = require('get-own-property-names-x');
+  var getOwnPropertySymbols = require('get-own-property-symbols-x');
+  var concat = Array.prototype.concat;
 
   reflectOwnKeys = function ownKeys(target) {
     assertIsObject(target);
-    var keys = gOPN ? gOPN(target) : objectKeys(target);
-    return gOPS ? keys.concat(gOPS(target)) : keys;
+    return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
   };
 }
 
