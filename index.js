@@ -1,6 +1,6 @@
 /**
  * @file Sham for Reflect.ownKeys
- * @version 1.5.0
+ * @version 2.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -9,21 +9,43 @@
 
 'use strict';
 
-var hasReflect = require('has-reflect-support-x');
-var reflectOwnKeys = hasReflect && Reflect.ownKeys;
+var nativeOwnKeys = require('has-reflect-support-x') && typeof Reflect.ownKeys === 'function' && Reflect.ownKeys;
 
-if (reflectOwnKeys) {
-  try {
-    var k = reflectOwnKeys({ a: 1, b: 2 }).sort();
-    if (k.length !== 2 || k[0] !== 'a' || k[1] !== 'b') {
-      throw new Error('failed');
-    }
-  } catch (ignore) {
-    reflectOwnKeys = null;
+var isWorking;
+if (nativeOwnKeys) {
+  var attempt = require('attempt-x');
+  var isArray = require('is-array-x');
+  var isCorrectRes = function _isCorrectRes(r, length) {
+    return r.threw === false && isArray(r.value) && r.value.length === length;
+  };
+
+  var either = function _either(r, a, b) {
+    var x = r.value[0];
+    var y = r.value[1];
+    return (x === a && y === b) || (x === b && y === a);
+  };
+
+  var res = attempt(nativeOwnKeys, 1);
+  isWorking = res.threw;
+
+  if (isWorking) {
+    res = attempt(nativeOwnKeys, { a: 1, b: 2 });
+    isWorking = isCorrectRes(res, 2) && either(res, 'a', 'b');
+  }
+
+  if (isWorking && require('has-symbol-support-x')) {
+    var symbol = Symbol('');
+    var testObj = { a: 1 };
+    testObj[symbol] = 2;
+    res = attempt(nativeOwnKeys, testObj);
+    isWorking = isCorrectRes(res, 2) && either(res, 'a', symbol);
   }
 }
 
-if (Boolean(reflectOwnKeys) === false) {
+var reflectOwnKeys;
+if (isWorking) {
+  reflectOwnKeys = nativeOwnKeys;
+} else {
   var assertIsObject = require('assert-is-object-x');
   var getOwnPropertyNames = require('get-own-property-names-x');
   var getOwnPropertySymbols = require('get-own-property-symbols-x');

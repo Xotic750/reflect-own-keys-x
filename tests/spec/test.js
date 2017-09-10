@@ -26,7 +26,7 @@ var ifSymbolsIt = hasSymbols ? it : xit;
 
 describe('reflectOwnKeys', function () {
   it('is a function', function () {
-    expect(typeof Reflect.ownKeys).toBe('function');
+    expect(typeof reflectOwnKeys).toBe('function');
   });
 
   it('throws if the target isn’t an object', function () {
