@@ -52,7 +52,7 @@
     "assert-is-object-x": "^3.0.1",
     "attempt-x": "^2.0.4",
     "get-own-property-names-x": "^2.2.0",
-    "get-own-property-symbols-x": "^1.1.0",
+    "get-own-property-symbols-x": "^2.0.0",
     "has-reflect-support-x": "^2.0.3",
     "is-array-x": "^2.0.5"
   },
