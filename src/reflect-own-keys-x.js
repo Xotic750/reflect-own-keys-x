@@ -1,12 +1,3 @@
-/**
- * @file Sham for Reflect.ownKeys.
- * @version 2.2.0
- * @author Xotic750 <Xotic750@gmail.com>
- * @copyright  Xotic750
- * @license {@link <https://opensource.org/licenses/MIT> MIT}
- * @module reflect-own-keys-x
- */
-
 const nativeOwnKeys = require('has-reflect-support-x') && typeof Reflect.ownKeys === 'function' && Reflect.ownKeys;
 
 let isWorking;
@@ -67,8 +58,5 @@ if (isWorking) {
  * @param {*} target - The target object from which to get the own keys.
  * @throws {TypeError} If target is not an Object.
  * @returns {object} An Array of the target object's own property keys.
- * @example
- * var reflectOwnKeys = require('reflect-own-keys-x');
- * reflectOwnKeys({ a: 1, b: 2 }); // ['a', 'b']
  */
 export default reflectOwnKeys;
