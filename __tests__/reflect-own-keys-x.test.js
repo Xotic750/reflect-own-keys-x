@@ -29,12 +29,10 @@ const ifSymbolsIt = hasSymbols ? it : xit;
 describe('reflectOwnKeys', function() {
   it('is a function', function() {
     expect.assertions(1);
-    expect.assertions(1);
     expect(typeof reflectOwnKeys).toBe('function');
   });
 
   it('throws if the target isn’t an object', function() {
-    expect.assertions(1);
     expect.assertions(1);
     expect(function() {
       reflectOwnKeys();
@@ -62,7 +60,6 @@ describe('reflectOwnKeys', function() {
   });
 
   it('should return the same result as Object.getOwnPropertyNames if there are no Symbols', function() {
-    expect.assertions(1);
     expect.assertions(1);
     const obj = {bar: 1, foo: 2};
     obj[1] = 'first';
