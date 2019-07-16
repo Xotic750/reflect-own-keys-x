@@ -52,8 +52,8 @@
     "assert-is-object-x": "^3.0.2",
     "attempt-x": "^2.0.5",
     "get-own-property-names-x": "^2.2.0",
-    "get-own-property-symbols-x": "^2.0.1",
-    "has-reflect-support-x": "^2.0.4",
+    "get-own-property-symbols-x": "^2.0.2",
+    "has-reflect-support-x": "^2.0.5",
     "is-array-x": "^2.0.6"
   },
   "devDependencies": {

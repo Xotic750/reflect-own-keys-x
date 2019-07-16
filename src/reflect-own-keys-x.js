@@ -71,4 +71,4 @@ if (isWorking) {
  * var reflectOwnKeys = require('reflect-own-keys-x');
  * reflectOwnKeys({ a: 1, b: 2 }); // ['a', 'b']
  */
-module.exports = reflectOwnKeys;
+export default reflectOwnKeys;
