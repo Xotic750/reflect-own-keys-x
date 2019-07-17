@@ -51,7 +51,7 @@
   "dependencies": {
     "assert-is-object-x": "^3.0.5",
     "attempt-x": "^2.0.8",
-    "get-own-property-names-x": "^2.2.0",
+    "get-own-property-names-x": "^3.0.0",
     "get-own-property-symbols-x": "^2.0.5",
     "has-reflect-support-x": "^2.0.8",
     "is-array-x": "^2.0.9"
