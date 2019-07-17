@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reflectOwnKeys throws if the target isn’t an object 1`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys throws if the target isn’t an object 2`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys throws if the target isn’t an object 3`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys throws if the target isn’t an object 4`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys throws if the target isn’t an object 5`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys throws if the target isn’t an object 6`] = `"Reflect.ownKeys called on non-object"`;

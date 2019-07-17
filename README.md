@@ -21,15 +21,13 @@
 <a name="module_reflect-own-keys-x"></a>
 
 ## reflect-own-keys-x
-Sham for Reflect.ownKeys
 
-**Version**: 2.2.0  
-**Author**: Xotic750 <Xotic750@gmail.com>  
-**License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
-**Copyright**: Xotic750  
+Sham for Reflect.ownKeys
+ 
 <a name="exp_module_reflect-own-keys-x--module.exports"></a>
 
 ### `module.exports` ⇒ <code>Object</code> ⏏
+
 This method returns an array of the target object's own property keys.
 Its return value is equivalent to
 Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
@@ -40,13 +38,14 @@ Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
 
 - <code>TypeError</code> If target is not an Object.
 
-
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type            | Description                                       |
+| ------ | --------------- | ------------------------------------------------- |
 | target | <code>\*</code> | The target object from which to get the own keys. |
 
-**Example**  
+**Example**
+
 ```js
-var reflectOwnKeys = require('reflect-own-keys-x');
-reflectOwnKeys({ a: 1, b: 2 }); // ['a', 'b']
+import reflectOwnKeys from 'reflect-own-keys-x';
+
+reflectOwnKeys({a: 1, b: 2}); // ['a', 'b']
 ```

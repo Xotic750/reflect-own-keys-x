@@ -1,4 +1,4 @@
-let reflectOwnKeys;
+import reflectOwnKeys from '../src/reflect-own-keys-x';
 
 const hasSymbols = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 const ifSymbolsIt = hasSymbols ? it : xit;
@@ -10,7 +10,7 @@ describe('reflectOwnKeys', function() {
   });
 
   it('throws if the target isn’t an object', function() {
-    expect.assertions(1);
+    expect.assertions(6);
     expect(function() {
       reflectOwnKeys();
     }).toThrowErrorMatchingSnapshot();
@@ -37,7 +37,7 @@ describe('reflectOwnKeys', function() {
   });
 
   it('should return the same result as Object.getOwnPropertyNames if there are no Symbols', function() {
-    expect.assertions(1);
+    expect.assertions(2);
     const obj = {bar: 1, foo: 2};
     obj[1] = 'first';
     const result = Object.getOwnPropertyNames(obj);
