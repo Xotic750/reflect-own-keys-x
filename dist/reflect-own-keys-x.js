@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-17T22:04:30.291Z",
+  "date": "2019-07-18T00:35:47.471Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "f5c4034584d181cf6d05",
+  "hash": "ccf07c4a45adc7763422",
   "license": "MIT",
-  "version": "3.0.0"
+  "version": "3.0.1"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -120,7 +120,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -131,7 +131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 var toStr = Object.prototype.toString;
-var hasSymbols = __webpack_require__(8)();
+var hasSymbols = __webpack_require__(7)();
 
 if (hasSymbols) {
 	var symToStr = Symbol.prototype.toString;
@@ -281,28 +281,6 @@ module.exports = function isArguments(value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/*!
- * is-primitive <https://github.com/jonschlinkert/is-primitive>
- *
- * Copyright (c) 2014-present, Jon Schlinkert.
- * Released under the MIT License.
- */
-
-
-
-module.exports = function isPrimitive(val) {
-  if (typeof val === 'object') {
-    return val === null;
-  }
-  return typeof val !== 'function';
-};
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 var getDay = Date.prototype.getDay;
@@ -326,7 +304,7 @@ module.exports = function isDateObject(value) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -336,7 +314,7 @@ var slice = Array.prototype.slice;
 var isArgs = __webpack_require__(4);
 
 var origKeys = Object.keys;
-var keysShim = origKeys ? function keys(o) { return origKeys(o); } : __webpack_require__(11);
+var keysShim = origKeys ? function keys(o) { return origKeys(o); } : __webpack_require__(10);
 
 var originalKeys = Object.keys;
 
@@ -365,14 +343,14 @@ module.exports = keysShim;
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
 var origSymbol = global.Symbol;
-var hasSymbolSham = __webpack_require__(10);
+var hasSymbolSham = __webpack_require__(9);
 
 module.exports = function hasNativeSymbols() {
 	if (typeof origSymbol !== 'function') { return false; }
@@ -383,10 +361,10 @@ module.exports = function hasNativeSymbols() {
 	return hasSymbolSham();
 };
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(8)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var g;
@@ -412,7 +390,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -461,7 +439,7 @@ module.exports = function hasSymbols() {
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -590,7 +568,7 @@ module.exports = keysShim;
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -629,7 +607,7 @@ var attempt = function attempt(fn) {
 /* harmony default export */ var attempt_x_esm = (attempt);
 
 
-// CONCATENATED MODULE: ./node_modules/is-array-x/node_modules/to-string-tag-x/dist/to-string-tag-x.esm.js
+// CONCATENATED MODULE: ./node_modules/to-string-tag-x/dist/to-string-tag-x.esm.js
 var nativeObjectToString = {}.toString;
 /**
  * The `toStringTag` method returns "[object type]", where type is the
@@ -731,35 +709,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 /* harmony default export */ var has_reflect_support_x_esm = ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === 'object' && Reflect !== null);
 
 
-// CONCATENATED MODULE: ./node_modules/assert-is-object-x/node_modules/has-symbol-support-x/dist/has-symbol-support-x.esm.js
-var dist_has_symbol_support_x_esm_this = undefined;
-
-function dist_has_symbol_support_x_esm_newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
-
-
-
-var has_symbol_support_x_esm_hasSymbolSupport = attempt_x_esm(function () {
-  dist_has_symbol_support_x_esm_newArrowCheck(this, dist_has_symbol_support_x_esm_this);
-
-  /* eslint-disable-next-line compat/compat */
-  return typeof Symbol === 'function' && is_symbol_default()(Symbol(''));
-}.bind(undefined));
-/**
- * Indicates if `Symbol`exists and creates the correct type.
- * `true`, if it exists and creates the correct type, otherwise `false`.
- *
- * @type boolean
- */
-
-/* harmony default export */ var dist_has_symbol_support_x_esm = (has_symbol_support_x_esm_hasSymbolSupport.threw === false && has_symbol_support_x_esm_hasSymbolSupport.value === true);
-
-
-// CONCATENATED MODULE: ./node_modules/assert-is-object-x/node_modules/to-string-symbols-supported-x/dist/to-string-symbols-supported-x.esm.js
+// CONCATENATED MODULE: ./node_modules/to-string-symbols-supported-x/dist/to-string-symbols-supported-x.esm.js
 
 
 /* eslint-disable-next-line compat/compat */
 
-var pToString = dist_has_symbol_support_x_esm && Symbol.prototype.toString;
+var pToString = has_symbol_support_x_esm && Symbol.prototype.toString;
 var isSymbolFn = typeof pToString === 'function' && is_symbol_default.a;
 /** @type {Function} */
 
@@ -781,8 +736,8 @@ var toStringSymbolsSupported = function toStringSymbolsSupported(value) {
 /* harmony default export */ var to_string_symbols_supported_x_esm = (toStringSymbolsSupported);
 
 
-// EXTERNAL MODULE: ./node_modules/assert-is-object-x/node_modules/is-primitive/index.js
-var is_primitive = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/is-primitive/index.js
+var is_primitive = __webpack_require__(1);
 var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
 
 // CONCATENATED MODULE: ./node_modules/assert-is-object-x/dist/assert-is-object-x.esm.js
@@ -864,41 +819,12 @@ var to_object_x_esm_toObject = function toObject(value) {
 /* harmony default export */ var to_object_x_esm = (to_object_x_esm_toObject);
 
 
-// CONCATENATED MODULE: ./node_modules/to-string-tag-x/dist/to-string-tag-x.esm.js
-var to_string_tag_x_esm_nativeObjectToString = {}.toString;
-/**
- * The `toStringTag` method returns "[object type]", where type is the
- * object type.
- *
- * @param {*} [value] - The object of which to get the object type string.
- * @returns {string} The object type string.
- */
-
-var to_string_tag_x_esm_toStringTag = function toStringTag(value) {
-  if (value === null) {
-    return '[object Null]';
-  }
-
-  if (typeof value === 'undefined') {
-    return '[object Undefined]';
-  }
-
-  return to_string_tag_x_esm_nativeObjectToString.call(value);
-};
-
-/* harmony default export */ var dist_to_string_tag_x_esm = (to_string_tag_x_esm_toStringTag);
-
-
 // EXTERNAL MODULE: ./node_modules/is-arguments/index.js
 var is_arguments = __webpack_require__(3);
 var is_arguments_default = /*#__PURE__*/__webpack_require__.n(is_arguments);
 
-// EXTERNAL MODULE: ./node_modules/is-primitive/index.js
-var node_modules_is_primitive = __webpack_require__(1);
-var node_modules_is_primitive_default = /*#__PURE__*/__webpack_require__.n(node_modules_is_primitive);
-
 // EXTERNAL MODULE: ./node_modules/is-date-object/index.js
-var is_date_object = __webpack_require__(6);
+var is_date_object = __webpack_require__(5);
 var is_date_object_default = /*#__PURE__*/__webpack_require__.n(is_date_object);
 
 // CONCATENATED MODULE: ./node_modules/to-boolean-x/dist/to-boolean-x.esm.js
@@ -1508,7 +1434,7 @@ var tryFuncToString = function funcToString(value, allowClass) {
 
 
 var is_function_x_esm_isFunction = function isFunction(value, allowClass) {
-  if (node_modules_is_primitive_default()(value)) {
+  if (is_primitive_default()(value)) {
     return false;
   }
 
@@ -1520,7 +1446,7 @@ var is_function_x_esm_isFunction = function isFunction(value, allowClass) {
     return false;
   }
 
-  var strTag = dist_to_string_tag_x_esm(value);
+  var strTag = to_string_tag_x_esm(value);
   return strTag === funcTag || strTag === genTag || strTag === asyncTag;
 };
 
@@ -1581,7 +1507,7 @@ var ordinaryToPrimitive = function _ordinaryToPrimitive(ordinary, hint) {
     if (is_function_x_esm(method)) {
       result = method.call(ordinary);
 
-      if (node_modules_is_primitive_default()(result)) {
+      if (is_primitive_default()(result)) {
         return result;
       }
     }
@@ -1670,7 +1596,7 @@ var to_primitive_x_esm_getExoticToPrim = function getExoticToPrim(value) {
 
 
 var to_primitive_x_esm_toPrimitive = function toPrimitive(input, preferredType) {
-  if (node_modules_is_primitive_default()(input)) {
+  if (is_primitive_default()(input)) {
     return input;
   }
 
@@ -1680,7 +1606,7 @@ var to_primitive_x_esm_toPrimitive = function toPrimitive(input, preferredType) 
   if (typeof exoticToPrim !== 'undefined') {
     var result = exoticToPrim.call(input, hint);
 
-    if (node_modules_is_primitive_default()(result)) {
+    if (is_primitive_default()(result)) {
       return result;
     }
 
@@ -2257,7 +2183,7 @@ var array_slice_x_esm_slice = function slice(array, start, end) {
  */
 
 var is_object_like_x_esm_isObjectLike = function isObjectLike(value) {
-  return node_modules_is_primitive_default()(value) === false && is_function_x_esm(value, true) === false;
+  return is_primitive_default()(value) === false && is_function_x_esm(value, true) === false;
 };
 
 /* harmony default export */ var is_object_like_x_esm = (is_object_like_x_esm_isObjectLike);
@@ -2305,33 +2231,6 @@ var has_own_property_x_esm_hasOwnProperty = function hasOwnProperty(object, prop
 };
 
 /* harmony default export */ var has_own_property_x_esm = (has_own_property_x_esm_hasOwnProperty);
-
-
-// CONCATENATED MODULE: ./node_modules/to-string-symbols-supported-x/dist/to-string-symbols-supported-x.esm.js
-
-
-/* eslint-disable-next-line compat/compat */
-
-var to_string_symbols_supported_x_esm_pToString = has_symbol_support_x_esm && Symbol.prototype.toString;
-var to_string_symbols_supported_x_esm_isSymbolFn = typeof to_string_symbols_supported_x_esm_pToString === 'function' && is_symbol_default.a;
-/** @type {Function} */
-
-var to_string_symbols_supported_x_esm_castString = ''.constructor;
-/**
- * The abstract operation ToString converts argument to a value of type String,
- * however the specification states that if the argument is a Symbol then a
- * 'TypeError' is thrown. This version also allows Symbols be converted to
- * a string. Other uncoercible exotics will still throw though.
- *
- * @param {*} [value] - The value to convert to a string.
- * @returns {string} The converted value.
- */
-
-var to_string_symbols_supported_x_esm_toStringSymbolsSupported = function toStringSymbolsSupported(value) {
-  return to_string_symbols_supported_x_esm_isSymbolFn && to_string_symbols_supported_x_esm_isSymbolFn(value) ? to_string_symbols_supported_x_esm_pToString.call(value) : to_string_symbols_supported_x_esm_castString(value);
-};
-
-/* harmony default export */ var dist_to_string_symbols_supported_x_esm = (to_string_symbols_supported_x_esm_toStringSymbolsSupported);
 
 
 // CONCATENATED MODULE: ./node_modules/math-clamp-x/dist/math-clamp-x.esm.js
@@ -2409,7 +2308,7 @@ var rxTest = reIsUint.test;
  */
 
 var is_index_x_esm_isIndex = function isIndex(value, length) {
-  var string = dist_to_string_symbols_supported_x_esm(value);
+  var string = to_string_symbols_supported_x_esm(value);
 
   if (rxTest.call(reIsUint, string) === false) {
     return false;
@@ -2592,7 +2491,7 @@ if (object_get_own_property_descriptor_x_esm_castBoolean($getOwnPropertyDescript
 
 
     descriptor = {
-      configurable: node_modules_is_primitive_default()(object) === false && isStringIndex === false,
+      configurable: is_primitive_default()(object) === false && isStringIndex === false,
       enumerable: property_is_enumerable_x_esm(obj, propKey)
     }; // If JS engine supports accessor properties then property may be a
     // getter or setter.
@@ -2876,7 +2775,7 @@ var is_regexp_x_esm_isRegex = function isRegex(value) {
   }
 
   if (has_to_string_tag_x_esm === false) {
-    return dist_to_string_tag_x_esm(value) === regexClass;
+    return to_string_tag_x_esm(value) === regexClass;
   }
 
   var descriptor = object_get_own_property_descriptor_x_esm(value, 'lastIndex');
@@ -2893,7 +2792,7 @@ var is_regexp_x_esm_isRegex = function isRegex(value) {
 
 
 // EXTERNAL MODULE: ./node_modules/object-keys/index.js
-var object_keys = __webpack_require__(7);
+var object_keys = __webpack_require__(6);
 var object_keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
 
 // CONCATENATED MODULE: ./node_modules/object-keys-x/dist/object-keys-x.esm.js
@@ -3057,7 +2956,7 @@ if (nativeGOPN) {
       getOPN = function getOwnPropertyNames(obj) {
         var val = to_object_x_esm(obj); // IE bug where layout engine calls userland gOPN for cross-domain `window` objects
 
-        if (win && win !== window && dist_to_string_tag_x_esm(val) === '[object Window]') {
+        if (win && win !== window && to_string_tag_x_esm(val) === '[object Window]') {
           var result = attempt_x_esm(nativeGOPN, val);
           return result.threw ? array_slice_x_esm(cachedWindowNames) : result.value;
         }
@@ -3078,85 +2977,6 @@ var gopn = getOPN;
 /* harmony default export */ var get_own_property_names_x_esm = (gopn);
 
 
-// CONCATENATED MODULE: ./node_modules/get-own-property-symbols-x/node_modules/is-nil-x/dist/is-nil-x.esm.js
-/**
- * Checks if `value` is `null` or `undefined`.
- *
- * @param {*} [value] - The value to check.
- * @returns {boolean} Returns `true` if `value` is nullish, else `false`.
- */
-var is_nil_x_esm_isNil = function isNil(value) {
-  /* eslint-disable-next-line lodash/prefer-is-nil */
-  return value === null || typeof value === 'undefined';
-};
-
-/* harmony default export */ var dist_is_nil_x_esm = (is_nil_x_esm_isNil);
-
-
-// CONCATENATED MODULE: ./node_modules/get-own-property-symbols-x/node_modules/require-object-coercible-x/dist/require-object-coercible-x.esm.js
-
-/**
- * The abstract operation RequireObjectCoercible throws an error if argument
- * is a value that cannot be converted to an Object using ToObject.
- *
- * @param {*} [value] - The `value` to check.
- * @throws {TypeError} If `value` is a `null` or `undefined`.
- * @returns {string} The `value`.
- */
-
-var dist_require_object_coercible_x_esm_requireObjectCoercible = function requireObjectCoercible(value) {
-  if (dist_is_nil_x_esm(value)) {
-    throw new TypeError("Cannot call method on ".concat(value));
-  }
-
-  return value;
-};
-
-/* harmony default export */ var dist_require_object_coercible_x_esm = (dist_require_object_coercible_x_esm_requireObjectCoercible);
-
-
-// CONCATENATED MODULE: ./node_modules/get-own-property-symbols-x/node_modules/to-object-x/dist/to-object-x.esm.js
-
-var to_object_x_esm_castObject = {}.constructor;
-/**
- * The abstract operation ToObject converts argument to a value of
- * type Object.
- *
- * @param {*} value - The `value` to convert.
- * @throws {TypeError} If `value` is a `null` or `undefined`.
- * @returns {!object} The `value` converted to an object.
- */
-
-var dist_to_object_x_esm_toObject = function toObject(value) {
-  return to_object_x_esm_castObject(dist_require_object_coercible_x_esm(value));
-};
-
-/* harmony default export */ var dist_to_object_x_esm = (dist_to_object_x_esm_toObject);
-
-
-// CONCATENATED MODULE: ./node_modules/get-own-property-symbols-x/node_modules/has-symbol-support-x/dist/has-symbol-support-x.esm.js
-var has_symbol_support_x_dist_has_symbol_support_x_esm_this = undefined;
-
-function has_symbol_support_x_dist_has_symbol_support_x_esm_newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
-
-
-
-var dist_has_symbol_support_x_esm_hasSymbolSupport = attempt_x_esm(function () {
-  has_symbol_support_x_dist_has_symbol_support_x_esm_newArrowCheck(this, has_symbol_support_x_dist_has_symbol_support_x_esm_this);
-
-  /* eslint-disable-next-line compat/compat */
-  return typeof Symbol === 'function' && is_symbol_default()(Symbol(''));
-}.bind(undefined));
-/**
- * Indicates if `Symbol`exists and creates the correct type.
- * `true`, if it exists and creates the correct type, otherwise `false`.
- *
- * @type boolean
- */
-
-/* harmony default export */ var has_symbol_support_x_dist_has_symbol_support_x_esm = (dist_has_symbol_support_x_esm_hasSymbolSupport.threw === false && dist_has_symbol_support_x_esm_hasSymbolSupport.value === true);
-
-
 // CONCATENATED MODULE: ./node_modules/get-own-property-symbols-x/dist/get-own-property-symbols-x.esm.js
 
 
@@ -3164,7 +2984,7 @@ var dist_has_symbol_support_x_esm_hasSymbolSupport = attempt_x_esm(function () {
 var nativeGOPS = {}.constructor.getOwnPropertySymbols;
 var get_own_property_symbols_x_esm_isWorking;
 
-if (has_symbol_support_x_dist_has_symbol_support_x_esm && nativeGOPS && typeof nativeGOPS === 'function') {
+if (has_symbol_support_x_esm && nativeGOPS && typeof nativeGOPS === 'function') {
   /* eslint-disable-next-line compat/compat */
   var symbol = Symbol('');
   var get_own_property_symbols_x_esm_testObj = {
@@ -3186,7 +3006,7 @@ if (has_symbol_support_x_dist_has_symbol_support_x_esm && nativeGOPS && typeof n
 
 
 var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnPropertySymbols(obj) {
-  var object = dist_to_object_x_esm(obj);
+  var object = to_object_x_esm(obj);
   return get_own_property_symbols_x_esm_isWorking ? nativeGOPS(object) : [];
 };
 
