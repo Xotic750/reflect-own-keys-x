@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-21T23:24:03.988Z",
+  "date": "2019-07-22T13:24:55.214Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
   "hash": "d24f899ca0067ac5b90c",
   "license": "MIT",
-  "version": "3.0.4"
+  "version": "3.0.5"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
