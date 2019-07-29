@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-07-27T22:08:55.723Z",
+  "date": "2019-07-29T15:56:32.336Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "080a6f84dc619f079a30",
+  "hash": "64f17ca476559b3bde4a",
   "license": "MIT",
   "version": "3.0.10"
 }
@@ -2217,8 +2217,8 @@ if (nativeGOPD) {
   var getOPDWorksOnDom = object_get_own_property_descriptor_x_esm_doc ? object_get_own_property_descriptor_x_esm_doesGOPDWork(object_get_own_property_descriptor_x_esm_doc.createElement('div'), 'sentinel') : true;
 
   if (getOPDWorksOnDom) {
-    var res = attempt_x_esm(nativeGOPD, object_get_own_property_descriptor_x_esm_castObject('abc'), 1);
-    var worksWithStr = res.threw === false && res.value && res.value.value === 'b';
+    var object_get_own_property_descriptor_x_esm_res = attempt_x_esm(nativeGOPD, object_get_own_property_descriptor_x_esm_castObject('abc'), 1);
+    var worksWithStr = object_get_own_property_descriptor_x_esm_res.threw === false && object_get_own_property_descriptor_x_esm_res.value && object_get_own_property_descriptor_x_esm_res.value.value === 'b';
 
     if (worksWithStr) {
       var getOPDWorksOnObject = object_get_own_property_descriptor_x_esm_doesGOPDWork({}, 'sentinel');
@@ -2643,17 +2643,17 @@ if (nativeKeys) {
     return x === a && y === b || x === b && y === a;
   };
 
-  var testObj = {
+  var object_keys_x_esm_testObj = {
     a: 1,
     b: 2
   };
-  var object_keys_x_esm_res = attempt_x_esm(nativeKeys, testObj);
+  var object_keys_x_esm_res = attempt_x_esm(nativeKeys, object_keys_x_esm_testObj);
   isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, 'a', 'b');
 
   if (isWorking) {
-    testObj = Object('a');
-    testObj.y = 1;
-    object_keys_x_esm_res = attempt_x_esm(nativeKeys, testObj);
+    object_keys_x_esm_testObj = Object('a');
+    object_keys_x_esm_testObj.y = 1;
+    object_keys_x_esm_res = attempt_x_esm(nativeKeys, object_keys_x_esm_testObj);
     isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, '0', 'y');
   }
 
@@ -2803,13 +2803,13 @@ var get_own_property_symbols_x_esm_isWorking;
 
 if (has_symbol_support_x_esm && nativeGOPS && typeof nativeGOPS === 'function') {
   /* eslint-disable-next-line compat/compat */
-  var symbol = Symbol('');
+  var get_own_property_symbols_x_esm_symbol = Symbol('');
   var get_own_property_symbols_x_esm_testObj = {
     a: 1
   };
-  get_own_property_symbols_x_esm_testObj[symbol] = 2;
+  get_own_property_symbols_x_esm_testObj[get_own_property_symbols_x_esm_symbol] = 2;
   var get_own_property_symbols_x_esm_r = attempt_x_esm(nativeGOPS, get_own_property_symbols_x_esm_testObj);
-  get_own_property_symbols_x_esm_isWorking = get_own_property_symbols_x_esm_r.threw === false && get_own_property_symbols_x_esm_r.value && get_own_property_symbols_x_esm_r.value.length === 1 && get_own_property_symbols_x_esm_r.value[0] === symbol;
+  get_own_property_symbols_x_esm_isWorking = get_own_property_symbols_x_esm_r.threw === false && get_own_property_symbols_x_esm_r.value && get_own_property_symbols_x_esm_r.value.length === 1 && get_own_property_symbols_x_esm_r.value[0] === get_own_property_symbols_x_esm_symbol;
 }
 /**
  * This method creates an array of all symbol properties found directly upon a
@@ -2838,44 +2838,58 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 
 
+
 /* eslint-disable-next-line compat/compat */
 
-var nativeOwnKeys = has_symbol_support_x_esm && typeof Reflect.ownKeys === 'function' && Reflect.ownKeys;
-var reflect_own_keys_x_esm_isWorking;
+var rok = Reflect.ownKeys;
+var nativeOwnKeys = has_symbol_support_x_esm && typeof rok === 'function' && rok;
 
-if (nativeOwnKeys) {
-  var reflect_own_keys_x_esm_isCorrectRes = function isCorrectRes(r, length) {
-    return r.threw === false && is_array_x_esm(r.value) && r.value.length === length;
-  };
+var reflect_own_keys_x_esm_isCorrectRes = function isCorrectRes(r, length) {
+  return r.threw === false && is_array_x_esm(r.value) && r.value.length === length;
+};
 
-  var reflect_own_keys_x_esm_either = function either(r, a, b) {
-    var x = r.value[0];
-    var y = r.value[1];
-    return x === a && y === b || x === b && y === a;
-  };
+var reflect_own_keys_x_esm_either = function either(r, a, b) {
+  var x = r.value[0];
+  var y = r.value[1];
+  return x === a && y === b || x === b && y === a;
+};
 
-  var reflect_own_keys_x_esm_res = attempt_x_esm(nativeOwnKeys, 1);
-  reflect_own_keys_x_esm_isWorking = reflect_own_keys_x_esm_res.threw;
+var reflect_own_keys_x_esm_test1 = function test1() {
+  return attempt_x_esm(nativeOwnKeys, 1).threw;
+};
 
-  if (reflect_own_keys_x_esm_isWorking) {
-    reflect_own_keys_x_esm_res = attempt_x_esm(nativeOwnKeys, {
-      a: 1,
-      b: 2
-    });
-    reflect_own_keys_x_esm_isWorking = reflect_own_keys_x_esm_isCorrectRes(reflect_own_keys_x_esm_res, 2) && reflect_own_keys_x_esm_either(reflect_own_keys_x_esm_res, 'a', 'b');
-  }
+var reflect_own_keys_x_esm_test2 = function test2() {
+  var res = attempt_x_esm(nativeOwnKeys, {
+    a: 1,
+    b: 2
+  });
+  return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either(res, 'a', 'b');
+};
 
-  if (reflect_own_keys_x_esm_isWorking && has_reflect_support_x_esm) {
+var reflect_own_keys_x_esm_test3 = function test3() {
+  if (has_reflect_support_x_esm) {
     /* eslint-disable-next-line compat/compat */
-    var reflect_own_keys_x_esm_symbol = Symbol('');
-    var reflect_own_keys_x_esm_testObj = {
+    var symbol = Symbol('');
+    var testObj = {
       a: 1
     };
-    reflect_own_keys_x_esm_testObj[reflect_own_keys_x_esm_symbol] = 2;
-    reflect_own_keys_x_esm_res = attempt_x_esm(nativeOwnKeys, reflect_own_keys_x_esm_testObj);
-    reflect_own_keys_x_esm_isWorking = reflect_own_keys_x_esm_isCorrectRes(reflect_own_keys_x_esm_res, 2) && reflect_own_keys_x_esm_either(reflect_own_keys_x_esm_res, 'a', reflect_own_keys_x_esm_symbol);
+    testObj[symbol] = 2;
+    var res = attempt_x_esm(nativeOwnKeys, testObj);
+    return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either(res, 'a', symbol);
   }
-}
+
+  return true;
+};
+
+var reflect_own_keys_x_esm_isWorking = to_boolean_x_esm(nativeOwnKeys) && reflect_own_keys_x_esm_test1() && reflect_own_keys_x_esm_test2() && reflect_own_keys_x_esm_test3();
+
+var reflect_own_keys_x_esm_implementation = function implementation() {
+  var concat = [].concat;
+  return function ownKeys(target) {
+    assert_is_object_x_esm(target);
+    return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
+  };
+};
 /**
  * This method returns an array of the target object's own property keys.
  * Its return value is equivalent to Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target)).
@@ -2886,21 +2900,8 @@ if (nativeOwnKeys) {
  */
 
 
-var reflectOwnKeys;
-
-if (reflect_own_keys_x_esm_isWorking) {
-  reflectOwnKeys = nativeOwnKeys;
-} else {
-  var concat = [].concat;
-
-  reflectOwnKeys = function ownKeys(target) {
-    assert_is_object_x_esm(target);
-    return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
-  };
-}
-
-var rok = reflectOwnKeys;
-/* harmony default export */ var reflect_own_keys_x_esm = __webpack_exports__["default"] = (rok);
+var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : reflect_own_keys_x_esm_implementation();
+/* harmony default export */ var reflect_own_keys_x_esm = __webpack_exports__["default"] = (reflectOwnKeys);
 
 
 

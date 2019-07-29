@@ -56,7 +56,8 @@
     "get-own-property-symbols-x": "^2.0.16",
     "has-reflect-support-x": "^2.0.23",
     "has-symbol-support-x": "^2.0.21",
-    "is-array-x": "^2.0.22"
+    "is-array-x": "^2.0.22",
+    "to-boolean-x": "^2.0.24"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

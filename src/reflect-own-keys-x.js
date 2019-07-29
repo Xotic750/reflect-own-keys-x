@@ -5,41 +5,58 @@ import hasReflectSupport from 'has-reflect-support-x';
 import assertIsObject from 'assert-is-object-x';
 import getOwnPropertyNames from 'get-own-property-names-x';
 import getOwnPropertySymbols from 'get-own-property-symbols-x';
+import toBoolean from 'to-boolean-x';
 
 /* eslint-disable-next-line compat/compat */
-const nativeOwnKeys = hasSymbolSupport && typeof Reflect.ownKeys === 'function' && Reflect.ownKeys;
+const rok = Reflect.ownKeys;
+const nativeOwnKeys = hasSymbolSupport && typeof rok === 'function' && rok;
 
-let isWorking;
+const isCorrectRes = function isCorrectRes(r, length) {
+  return r.threw === false && isArray(r.value) && r.value.length === length;
+};
 
-if (nativeOwnKeys) {
-  const isCorrectRes = function isCorrectRes(r, length) {
-    return r.threw === false && isArray(r.value) && r.value.length === length;
-  };
+const either = function either(r, a, b) {
+  const x = r.value[0];
+  const y = r.value[1];
 
-  const either = function either(r, a, b) {
-    const x = r.value[0];
-    const y = r.value[1];
+  return (x === a && y === b) || (x === b && y === a);
+};
 
-    return (x === a && y === b) || (x === b && y === a);
-  };
+const test1 = function test1() {
+  return attempt(nativeOwnKeys, 1).threw;
+};
 
-  let res = attempt(nativeOwnKeys, 1);
-  isWorking = res.threw;
+const test2 = function test2() {
+  const res = attempt(nativeOwnKeys, {a: 1, b: 2});
 
-  if (isWorking) {
-    res = attempt(nativeOwnKeys, {a: 1, b: 2});
-    isWorking = isCorrectRes(res, 2) && either(res, 'a', 'b');
-  }
+  return isCorrectRes(res, 2) && either(res, 'a', 'b');
+};
 
-  if (isWorking && hasReflectSupport) {
+const test3 = function test3() {
+  if (hasReflectSupport) {
     /* eslint-disable-next-line compat/compat */
     const symbol = Symbol('');
     const testObj = {a: 1};
     testObj[symbol] = 2;
-    res = attempt(nativeOwnKeys, testObj);
-    isWorking = isCorrectRes(res, 2) && either(res, 'a', symbol);
+    const res = attempt(nativeOwnKeys, testObj);
+
+    return isCorrectRes(res, 2) && either(res, 'a', symbol);
   }
-}
+
+  return true;
+};
+
+const isWorking = toBoolean(nativeOwnKeys) && test1() && test2() && test3();
+
+const implementation = function implementation() {
+  const {concat} = [];
+
+  return function ownKeys(target) {
+    assertIsObject(target);
+
+    return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
+  };
+};
 
 /**
  * This method returns an array of the target object's own property keys.
@@ -49,20 +66,6 @@ if (nativeOwnKeys) {
  * @throws {TypeError} If target is not an Object.
  * @returns {object} An Array of the target object's own property keys.
  */
-let reflectOwnKeys;
+const reflectOwnKeys = isWorking ? nativeOwnKeys : implementation();
 
-if (isWorking) {
-  reflectOwnKeys = nativeOwnKeys;
-} else {
-  const {concat} = [];
-
-  reflectOwnKeys = function ownKeys(target) {
-    assertIsObject(target);
-
-    return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
-  };
-}
-
-const rok = reflectOwnKeys;
-
-export default rok;
+export default reflectOwnKeys;
