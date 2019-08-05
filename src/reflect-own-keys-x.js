@@ -10,12 +10,14 @@ import toBoolean from 'to-boolean-x';
 /* eslint-disable-next-line compat/compat */
 const rok = Reflect.ownKeys;
 const nativeOwnKeys = hasSymbolSupport && typeof rok === 'function' && rok;
+const {concat} = [];
 
 const isCorrectRes = function isCorrectRes(r, length) {
   return r.threw === false && isArray(r.value) && r.value.length === length;
 };
 
-const either = function either(r, a, b) {
+const either = function either(args) {
+  const [r, a, b] = args;
   const x = r.value[0];
   const y = r.value[1];
 
@@ -29,7 +31,7 @@ const test1 = function test1() {
 const test2 = function test2() {
   const res = attempt(nativeOwnKeys, {a: 1, b: 2});
 
-  return isCorrectRes(res, 2) && either(res, 'a', 'b');
+  return isCorrectRes(res, 2) && either([res, 'a', 'b']);
 };
 
 const test3 = function test3() {
@@ -40,7 +42,7 @@ const test3 = function test3() {
     testObj[symbol] = 2;
     const res = attempt(nativeOwnKeys, testObj);
 
-    return isCorrectRes(res, 2) && either(res, 'a', symbol);
+    return isCorrectRes(res, 2) && either([res, 'a', symbol]);
   }
 
   return true;
@@ -48,14 +50,10 @@ const test3 = function test3() {
 
 const isWorking = toBoolean(nativeOwnKeys) && test1() && test2() && test3();
 
-const implementation = function implementation() {
-  const {concat} = [];
+const implementation = function ownKeys(target) {
+  assertIsObject(target);
 
-  return function ownKeys(target) {
-    assertIsObject(target);
-
-    return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
-  };
+  return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
 };
 
 /**
@@ -66,6 +64,6 @@ const implementation = function implementation() {
  * @throws {TypeError} If target is not an Object.
  * @returns {object} An Array of the target object's own property keys.
  */
-const reflectOwnKeys = isWorking ? nativeOwnKeys : implementation();
+const reflectOwnKeys = isWorking ? nativeOwnKeys : implementation;
 
 export default reflectOwnKeys;

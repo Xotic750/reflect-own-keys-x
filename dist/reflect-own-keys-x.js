@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-04T23:29:27.803Z",
+  "date": "2019-08-05T12:03:40.698Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "befc7b6748bdd62dbbe8",
+  "hash": "d4bb3fd00f6aedaaaaed",
   "license": "MIT",
   "version": "3.0.11"
 }
@@ -2894,6 +2894,14 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 
 // CONCATENATED MODULE: ./dist/reflect-own-keys-x.esm.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -2906,12 +2914,18 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 var rok = Reflect.ownKeys;
 var nativeOwnKeys = has_symbol_support_x_esm && typeof rok === 'function' && rok;
+var concat = [].concat;
 
 var reflect_own_keys_x_esm_isCorrectRes = function isCorrectRes(r, length) {
   return r.threw === false && is_array_x_esm(r.value) && r.value.length === length;
 };
 
-var reflect_own_keys_x_esm_either = function either(r, a, b) {
+var reflect_own_keys_x_esm_either = function either(args) {
+  var _args = _slicedToArray(args, 3),
+      r = _args[0],
+      a = _args[1],
+      b = _args[2];
+
   var x = r.value[0];
   var y = r.value[1];
   return x === a && y === b || x === b && y === a;
@@ -2926,7 +2940,7 @@ var reflect_own_keys_x_esm_test2 = function test2() {
     a: 1,
     b: 2
   });
-  return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either(res, 'a', 'b');
+  return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either([res, 'a', 'b']);
 };
 
 var reflect_own_keys_x_esm_test3 = function test3() {
@@ -2938,7 +2952,7 @@ var reflect_own_keys_x_esm_test3 = function test3() {
     };
     testObj[symbol] = 2;
     var res = attempt_x_esm(nativeOwnKeys, testObj);
-    return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either(res, 'a', symbol);
+    return reflect_own_keys_x_esm_isCorrectRes(res, 2) && reflect_own_keys_x_esm_either([res, 'a', symbol]);
   }
 
   return true;
@@ -2946,12 +2960,9 @@ var reflect_own_keys_x_esm_test3 = function test3() {
 
 var reflect_own_keys_x_esm_isWorking = to_boolean_x_esm(nativeOwnKeys) && reflect_own_keys_x_esm_test1() && reflect_own_keys_x_esm_test2() && reflect_own_keys_x_esm_test3();
 
-var reflect_own_keys_x_esm_implementation = function implementation() {
-  var concat = [].concat;
-  return function ownKeys(target) {
-    assert_is_object_x_esm(target);
-    return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
-  };
+var implementation = function ownKeys(target) {
+  assert_is_object_x_esm(target);
+  return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
 };
 /**
  * This method returns an array of the target object's own property keys.
@@ -2963,7 +2974,7 @@ var reflect_own_keys_x_esm_implementation = function implementation() {
  */
 
 
-var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : reflect_own_keys_x_esm_implementation();
+var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : implementation;
 /* harmony default export */ var reflect_own_keys_x_esm = __webpack_exports__["default"] = (reflectOwnKeys);
 
 
