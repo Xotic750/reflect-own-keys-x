@@ -1,13 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`reflectOwnKeys throws if the target isn’t an object 1`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 1`] = `"undefined is not an object"`;
 
-exports[`reflectOwnKeys throws if the target isn’t an object 2`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 2`] = `"undefined is not an object"`;
 
-exports[`reflectOwnKeys throws if the target isn’t an object 3`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 3`] = `"null is not an object"`;
 
-exports[`reflectOwnKeys throws if the target isn’t an object 4`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 4`] = `"1 is not an object"`;
 
-exports[`reflectOwnKeys throws if the target isn’t an object 5`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 5`] = `"true is not an object"`;
 
-exports[`reflectOwnKeys throws if the target isn’t an object 6`] = `"Reflect.ownKeys called on non-object"`;
+exports[`reflectOwnKeys 0 throws if the target isn’t an object 6`] = `" is not an object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 1`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 2`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 3`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 4`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 5`] = `"Reflect.ownKeys called on non-object"`;
+
+exports[`reflectOwnKeys 1 throws if the target isn’t an object 6`] = `"Reflect.ownKeys called on non-object"`;

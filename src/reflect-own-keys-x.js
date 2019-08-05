@@ -50,7 +50,7 @@ const test3 = function test3() {
 
 const isWorking = toBoolean(nativeOwnKeys) && test1() && test2() && test3();
 
-const implementation = function ownKeys(target) {
+export const implementation = function ownKeys(target) {
   assertIsObject(target);
 
   return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));

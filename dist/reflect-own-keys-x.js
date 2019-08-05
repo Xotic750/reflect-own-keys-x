@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-05T15:59:09.822Z",
+  "date": "2019-08-05T17:33:37.707Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "d4bb3fd00f6aedaaaaed",
+  "hash": "1830ffaa11fa67d58b4e",
   "license": "MIT",
   "version": "3.0.11"
 }
@@ -2894,6 +2894,7 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 
 // CONCATENATED MODULE: ./dist/reflect-own-keys-x.esm.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "implementation", function() { return implementation; });
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -2959,7 +2960,6 @@ var reflect_own_keys_x_esm_test3 = function test3() {
 };
 
 var reflect_own_keys_x_esm_isWorking = to_boolean_x_esm(nativeOwnKeys) && reflect_own_keys_x_esm_test1() && reflect_own_keys_x_esm_test2() && reflect_own_keys_x_esm_test3();
-
 var implementation = function ownKeys(target) {
   assert_is_object_x_esm(target);
   return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
@@ -2972,7 +2972,6 @@ var implementation = function ownKeys(target) {
  * @throws {TypeError} If target is not an Object.
  * @returns {object} An Array of the target object's own property keys.
  */
-
 
 var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : implementation;
 /* harmony default export */ var reflect_own_keys_x_esm = __webpack_exports__["default"] = (reflectOwnKeys);

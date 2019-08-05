@@ -63,8 +63,7 @@ var test3 = function test3() {
 };
 
 var isWorking = toBoolean(nativeOwnKeys) && test1() && test2() && test3();
-
-var implementation = function ownKeys(target) {
+export var implementation = function ownKeys(target) {
   assertIsObject(target);
   return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
 };
@@ -76,7 +75,6 @@ var implementation = function ownKeys(target) {
  * @throws {TypeError} If target is not an Object.
  * @returns {object} An Array of the target object's own property keys.
  */
-
 
 var reflectOwnKeys = isWorking ? nativeOwnKeys : implementation;
 export default reflectOwnKeys;
