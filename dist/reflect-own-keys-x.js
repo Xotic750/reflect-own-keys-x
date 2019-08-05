@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-05T20:35:01.481Z",
+  "date": "2019-08-05T21:30:42.172Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "1aa7165db1c2818efc61",
+  "hash": "fd7844e241ad357668aa",
   "license": "MIT",
-  "version": "3.0.12"
+  "version": "3.0.13"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -633,41 +633,28 @@ var toStringTag = function toStringTag(value) {
 
 
 // CONCATENATED MODULE: ./node_modules/is-array-x/dist/is-array-x.esm.js
-var _this = undefined;
-
-function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
 
 
-
-var nativeIsArray = [].isArray;
-var isArrayNative = typeof nativeIsArray === 'function' && nativeIsArray;
-var testRes = isArrayNative && attempt_x_esm(function () {
-  _newArrowCheck(this, _this);
-
-  return isArrayNative([]) === true && isArrayNative({
+var nia = [].isArray;
+var nativeIsArray = typeof nia === 'function' && nia;
+var is_array_x_esm_testResult = attempt_x_esm(function attemptee() {
+  return nativeIsArray([]) === true && nativeIsArray({
     length: 0
   }) === false;
-}.bind(undefined));
+});
+var isWorking = is_array_x_esm_testResult.threw === false && is_array_x_esm_testResult.value === true;
+var implementation = function isArray(value) {
+  return to_string_tag_x_esm(value) === '[object Array]';
+};
+/**
+ * Determines whether the passed value is an Array.
+ *
+ * @param {*} value - The value to test.
+ * @returns {boolean} - True if an array; otherwise false.
+ */
 
-var isArrayFn = function iife() {
-  if (testRes && testRes.threw === false && testRes.value === true) {
-    return isArrayNative;
-  }
-  /**
-   * The isArray() function determines whether the passed value is an Array.
-   *
-   * @function isArray
-   * @param {*} [value] - The object to be checked..
-   * @returns {boolean} `true` if the object is an Array; otherwise, `false`.
-   */
-
-
-  return function isArray(value) {
-    return to_string_tag_x_esm(value) === '[object Array]';
-  };
-}();
-
-/* harmony default export */ var is_array_x_esm = (isArrayFn);
+var is_array_x_esm_isArray = isWorking ? nativeIsArray : implementation;
+/* harmony default export */ var is_array_x_esm = (is_array_x_esm_isArray);
 
 
 // EXTERNAL MODULE: ./node_modules/is-symbol/index.js
@@ -675,14 +662,14 @@ var is_symbol = __webpack_require__(0);
 var is_symbol_default = /*#__PURE__*/__webpack_require__.n(is_symbol);
 
 // CONCATENATED MODULE: ./node_modules/has-symbol-support-x/dist/has-symbol-support-x.esm.js
-var has_symbol_support_x_esm_this = undefined;
+var _this = undefined;
 
-function has_symbol_support_x_esm_newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
+function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { throw new TypeError("Cannot instantiate an arrow function"); } }
 
 
 
 var hasSymbolSupport = attempt_x_esm(function () {
-  has_symbol_support_x_esm_newArrowCheck(this, has_symbol_support_x_esm_this);
+  _newArrowCheck(this, _this);
 
   /* eslint-disable-next-line compat/compat */
   return typeof Symbol === 'function' && is_symbol_default()(Symbol(''));
@@ -2679,7 +2666,7 @@ var object_keys_default = /*#__PURE__*/__webpack_require__.n(object_keys);
 
 var object_keys_x_esm_ObjectCtr = {}.constructor;
 var nativeKeys = typeof object_keys_x_esm_ObjectCtr.keys === 'function' && object_keys_x_esm_ObjectCtr.keys;
-var isWorking;
+var object_keys_x_esm_isWorking;
 var throwsWithNull;
 var object_keys_x_esm_worksWithPrim;
 var worksWithRegex;
@@ -2702,16 +2689,16 @@ if (nativeKeys) {
     b: 2
   };
   var object_keys_x_esm_res = attempt_x_esm(nativeKeys, object_keys_x_esm_testObj);
-  isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, 'a', 'b');
+  object_keys_x_esm_isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, 'a', 'b');
 
-  if (isWorking) {
+  if (object_keys_x_esm_isWorking) {
     object_keys_x_esm_testObj = Object('a');
     object_keys_x_esm_testObj.y = 1;
     object_keys_x_esm_res = attempt_x_esm(nativeKeys, object_keys_x_esm_testObj);
-    isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, '0', 'y');
+    object_keys_x_esm_isWorking = object_keys_x_esm_isCorrectRes(object_keys_x_esm_res, 2) && either(object_keys_x_esm_res, '0', 'y');
   }
 
-  if (isWorking) {
+  if (object_keys_x_esm_isWorking) {
     throwsWithNull = attempt_x_esm(nativeKeys, null).threw;
     object_keys_x_esm_worksWithPrim = object_keys_x_esm_isCorrectRes(attempt_x_esm(nativeKeys, 42), 0);
     worksWithRegex = attempt_x_esm(nativeKeys, /a/g).threw === false;
@@ -2736,7 +2723,7 @@ if (nativeKeys) {
 
 var objectKeys;
 
-if (isWorking) {
+if (object_keys_x_esm_isWorking) {
   if (throwsWithNull && object_keys_x_esm_worksWithPrim && worksWithRegex && worksWithArgs && object_keys_x_esm_worksWithStr) {
     objectKeys = nativeKeys;
   } else {
@@ -2894,7 +2881,7 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 
 // CONCATENATED MODULE: ./dist/reflect-own-keys-x.esm.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "implementation", function() { return implementation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "implementation", function() { return reflect_own_keys_x_esm_implementation; });
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -2960,7 +2947,7 @@ var reflect_own_keys_x_esm_test3 = function test3() {
 };
 
 var reflect_own_keys_x_esm_isWorking = to_boolean_x_esm(nativeOwnKeys) && reflect_own_keys_x_esm_test1() && reflect_own_keys_x_esm_test2() && reflect_own_keys_x_esm_test3();
-var implementation = function ownKeys(target) {
+var reflect_own_keys_x_esm_implementation = function ownKeys(target) {
   assert_is_object_x_esm(target);
   return concat.call(get_own_property_names_x_esm(target), get_own_property_symbols_x_esm(target));
 };
@@ -2973,7 +2960,7 @@ var implementation = function ownKeys(target) {
  * @returns {object} An Array of the target object's own property keys.
  */
 
-var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : implementation;
+var reflectOwnKeys = reflect_own_keys_x_esm_isWorking ? nativeOwnKeys : reflect_own_keys_x_esm_implementation;
 /* harmony default export */ var reflect_own_keys_x_esm = __webpack_exports__["default"] = (reflectOwnKeys);
 
 
