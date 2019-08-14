@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-13T15:44:18.332Z",
+  "date": "2019-08-14T15:59:14.645Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "c3f33292d7ead7c184f6",
+  "hash": "aed7a1427cabfd5f7832",
   "license": "MIT",
-  "version": "3.0.13"
+  "version": "3.1.0"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -764,13 +764,15 @@ var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
  * not. Otherwise returns the `value`.
  *
  * @param {*} value - The argument to be tested.
+ * @param {string} [message] - An alternative user message.
  * @throws {TypeError} Throws if `value` is not an object.
  * @returns {*} Returns `value` if it is an object.
  */
 
-var assert_is_object_x_esm_assertIsObject = function assertIsObject(value) {
+var assert_is_object_x_esm_assertIsObject = function assertIsObject(value, message) {
   if (is_primitive_default()(value)) {
-    throw new TypeError("".concat(to_string_symbols_supported_x_esm(value), " is not an object"));
+    var msg = arguments.length > 1 ? to_string_symbols_supported_x_esm(message) : "".concat(to_string_symbols_supported_x_esm(value), " is not an object");
+    throw new TypeError(msg);
   }
 
   return value;
@@ -1600,7 +1602,8 @@ var to_primitive_x_esm_toPrimitive = function toPrimitive(input, preferredType) 
  *
  * @type number
  */
-/* harmony default export */ var nan_x_esm = (0 / 0);
+var constantNAN = 0 / 0;
+/* harmony default export */ var nan_x_esm = (constantNAN);
 
 
 // CONCATENATED MODULE: ./node_modules/parse-int-x/dist/parse-int-x.esm.js
@@ -1779,7 +1782,8 @@ var is_nan_x_esm_isNaN = function isNaN(value) {
  *
  * @type number
  */
-/* harmony default export */ var infinity_x_esm = (1 / 0);
+var constantInfinity = 1 / 0;
+/* harmony default export */ var infinity_x_esm = (constantInfinity);
 
 
 // CONCATENATED MODULE: ./node_modules/is-finite-x/dist/is-finite-x.esm.js
@@ -2793,6 +2797,14 @@ var ok = objectKeys;
 // CONCATENATED MODULE: ./node_modules/get-own-property-names-x/dist/get-own-property-names-x.esm.js
 function get_own_property_names_x_esm_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { get_own_property_names_x_esm_typeof = function _typeof(obj) { return typeof obj; }; } else { get_own_property_names_x_esm_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return get_own_property_names_x_esm_typeof(obj); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -2807,7 +2819,12 @@ var get_own_property_names_x_esm_isCorrectRes = function isCorrectRes(r, length)
   return r.threw === false && is_array_x_esm(r.value) && r.value.length === length;
 };
 
-var get_own_property_names_x_esm_either = function either(r, a, b) {
+var get_own_property_names_x_esm_either = function either(args) {
+  var _args = _slicedToArray(args, 3),
+      r = _args[0],
+      a = _args[1],
+      b = _args[2];
+
   var x = r.value[0];
   var y = r.value[1];
   return x === a && y === b || x === b && y === a;
@@ -2815,7 +2832,7 @@ var get_own_property_names_x_esm_either = function either(r, a, b) {
 
 var get_own_property_names_x_esm_test1 = function test1() {
   var res = attempt_x_esm(nativeGOPN, 'fo');
-  return get_own_property_names_x_esm_isCorrectRes(res, 3) && get_own_property_names_x_esm_either(res, '0', '1') && res.value[2] === 'length';
+  return get_own_property_names_x_esm_isCorrectRes(res, 3) && get_own_property_names_x_esm_either([res, '0', '1']) && res.value[2] === 'length';
 };
 
 var get_own_property_names_x_esm_test2 = function test2() {
@@ -2823,7 +2840,7 @@ var get_own_property_names_x_esm_test2 = function test2() {
     a: 1,
     b: 2
   });
-  return get_own_property_names_x_esm_isCorrectRes(res, 2) && get_own_property_names_x_esm_either(res, 'a', 'b');
+  return get_own_property_names_x_esm_isCorrectRes(res, 2) && get_own_property_names_x_esm_either([res, 'a', 'b']);
 };
 
 var get_own_property_names_x_esm_implementation1 = function implementation1() {
@@ -2911,13 +2928,13 @@ var get_own_property_symbols_x_esm_getOwnPropertySymbols = function getOwnProper
 
 // CONCATENATED MODULE: ./dist/reflect-own-keys-x.esm.js
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "implementation", function() { return reflect_own_keys_x_esm_implementation; });
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+function reflect_own_keys_x_esm_slicedToArray(arr, i) { return reflect_own_keys_x_esm_arrayWithHoles(arr) || reflect_own_keys_x_esm_iterableToArrayLimit(arr, i) || reflect_own_keys_x_esm_nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function reflect_own_keys_x_esm_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function reflect_own_keys_x_esm_iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function reflect_own_keys_x_esm_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -2938,7 +2955,7 @@ var reflect_own_keys_x_esm_isCorrectRes = function isCorrectRes(r, length) {
 };
 
 var reflect_own_keys_x_esm_either = function either(args) {
-  var _args = _slicedToArray(args, 3),
+  var _args = reflect_own_keys_x_esm_slicedToArray(args, 3),
       r = _args[0],
       a = _args[1],
       b = _args[2];
