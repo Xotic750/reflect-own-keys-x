@@ -14,11 +14,12 @@ import assertIsObject from 'assert-is-object-x';
 import getOwnPropertyNames from 'get-own-property-names-x';
 import getOwnPropertySymbols from 'get-own-property-symbols-x';
 import toBoolean from 'to-boolean-x';
+import methodize from 'simple-methodize-x';
 /* eslint-disable-next-line compat/compat */
 
 var rok = Reflect.ownKeys;
 var nativeOwnKeys = hasSymbolSupport && typeof rok === 'function' && rok;
-var concat = [].concat;
+var concat = methodize([].concat);
 
 var isCorrectRes = function isCorrectRes(r, length) {
   return r.threw === false && isArray(r.value) && r.value.length === length;
@@ -65,7 +66,7 @@ var test3 = function test3() {
 var isWorking = toBoolean(nativeOwnKeys) && test1() && test2() && test3();
 export var implementation = function ownKeys(target) {
   assertIsObject(target);
-  return concat.call(getOwnPropertyNames(target), getOwnPropertySymbols(target));
+  return concat(getOwnPropertyNames(target), getOwnPropertySymbols(target));
 };
 /**
  * This method returns an array of the target object's own property keys.

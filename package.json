@@ -58,6 +58,7 @@
     "has-reflect-support-x": "^2.1.0",
     "has-symbol-support-x": "^2.1.0",
     "is-array-x": "^2.1.0",
+    "simple-methodize-x": "^1.0.2",
     "to-boolean-x": "^2.1.0"
   },
   "devDependencies": {
