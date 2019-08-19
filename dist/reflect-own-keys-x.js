@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-08-18T19:17:46.470Z",
+  "date": "2019-08-19T12:43:09.096Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
