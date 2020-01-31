@@ -2,11 +2,11 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2017",
-  "date": "2019-09-05T20:28:15.565Z",
+  "date": "2020-01-31T00:44:49.221Z",
   "describe": "",
   "description": "Sham for Reflect.ownKeys",
   "file": "reflect-own-keys-x.js",
-  "hash": "e34e220a011e6d268fda",
+  "hash": "19a9fab213b671c832b7",
   "license": "MIT",
   "version": "3.1.2"
 }
@@ -3287,7 +3287,7 @@ function reflect_own_keys_x_esm_slicedToArray(arr, i) { return reflect_own_keys_
 
 function reflect_own_keys_x_esm_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function reflect_own_keys_x_esm_iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function reflect_own_keys_x_esm_iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function reflect_own_keys_x_esm_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
